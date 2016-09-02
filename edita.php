@@ -1,4 +1,6 @@
 <?php
+if ($level >= "1"){ //Verificando o level do usuario
+
 $iduser = $_GET['id'];
 
 $adminedita = mysqli_query($db,"SELECT * FROM usuarios WHERE id ='$iduser'") or die ("deu ruim");
@@ -38,4 +40,5 @@ print "
                </form>
 			   <p>$envia</p>
 ";
+} else {echo "Você não é admin";}
 ?>

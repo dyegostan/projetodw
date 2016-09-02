@@ -12,7 +12,8 @@ Para rodar você precisa de um servidor MySQL e um servidor web com suporte a ph
 ## Baixando e configurando
 
 Vá até sua pasta de preferencia e use o comando:
-    # https://github.com/dyegostan/projetodw.git
+  
+    # git clone https://github.com/dyegostan/projetodw.git
 
 Abra o arquivo  conectar.php e configure o usuário, senha e database de sua preferencia:
 

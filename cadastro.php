@@ -16,7 +16,7 @@
       
       $count = mysqli_num_rows($result);
 	  if($count == 0) {
-	  	 include_once("email.php");
+		 include_once("email.php");
 		 include_once("timestamp.php"); // carrega timestamp
 		 $sqlinserir = "INSERT INTO `projetodw`.`usuarios` (`id`, `usuario`, `senha`, `ultimo_login`, `contador`, `email`, `ban`, `ultimo_ip`, `level`, `registro`) VALUES (NULL, '$myusername', '$mypassword', '0000-00-00 00:00:00', '0', '$myemail', '0', '0', '0', '$timestamp')";
 		 mysqli_query($db,$sqlinserir);
@@ -30,7 +30,8 @@
    
    <head>
       <title>Cadastro</title>
-      
+		<script language="JavaScript" src="jquery/jquery.js" type="text/javascript"></script>
+		<script language="JavaScript" src="jquery/jquery.validate.js" type="text/javascript"></script>
       <style type = "text/css">
          body {
             font-family:Arial, Helvetica, sans-serif;
@@ -49,8 +50,49 @@
 			float: right;
             border:#666666 solid 1px;
          }
+		label.error {
+		float: none;
+		color: red;
+		margin: 0 .5em 0 0;
+		vertical-align: top;
+		font-size: 10px
+		}
       </style>
-      
+    <script>
+$(document).ready( function() {
+    $("#cadastro").validate({
+        // Define as regras
+        rules: {
+            usuario: {
+                // requerido quantidade
+                required: true, minlength: 4
+            },
+			senha: {
+                // requerido quantidade
+                required: true, minlength: 4
+            },
+			email: {
+                // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+                required: true, email: true
+            },
+
+        },
+        // Define as mensagens de erro para cada regra
+        messages: {
+            usuario: {
+                required: "Digite o seu login", minLength: "O seu login deve conter, no mínimo, 4 caracteres"
+            },
+			senha: {
+                required: "Digite sua senha", minLength: "Sua senha deve conter, no mínimo, 4 caracteres"
+            },
+			email: {
+                required: "Digite o seu e-mail para contato", email: "Digite um e-mail válido"
+            },
+ 
+        }
+    });
+});
+</script>  
    </head>
    
    <body bgcolor = "#FFFFFF">
@@ -61,9 +103,9 @@
 				
             <div style = "margin:30px">
                
-               <form action = "" method = "post">
-                  <label>Usuário: </label><input type = "text" name = "usuario" class = "box" required autofocus/><br /><br />
-                  <label>Senha: </label><input type = "password" name = "senha" class = "box" required /><br/><br />
+               <form id = "cadastro" action = "" method = "post">
+                  <label>Usuário: </label><input type = "text" name = "usuario" class = "box" autofocus/><br /><br />
+                  <label>Senha: </label><input type = "password" name = "senha" class = "box" /><br/><br />
 				  <label>Email: </label><input type = "text" name = "email" class = "box" /><br /><br />
                   <input type = "submit" value = " Cadastrar "/><br />
                </form>

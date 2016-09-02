@@ -36,7 +36,8 @@
    
    <head>
       <title>Login Page</title>
-      
+		<script language="JavaScript" src="jquery/jquery.js" type="text/javascript"></script>
+		<script language="JavaScript" src="jquery/jquery.validate.js" type="text/javascript"></script>
       <style type = "text/css">
          body {
             font-family:Arial, Helvetica, sans-serif;
@@ -54,8 +55,42 @@
 			float: right;
             border:#666666 solid 1px;
          }
+		 label.error {
+    float: none;
+    color: red;
+    margin: 0 .5em 0 0;
+    vertical-align: top;
+    font-size: 10px
+}
       </style>
-      
+<script>
+$(document).ready( function() {
+    $("#login").validate({
+        // Define as regras
+        rules: {
+            username: {
+                // requerido quantidade
+                required: true, minlength: 4
+            },
+			password: {
+                // requerido quantidade
+                required: true, minlength: 4
+            },
+
+        },
+        // Define as mensagens de erro para cada regra
+        messages: {
+            username: {
+                required: "Digite o seu login", minLength: "O seu login deve conter, no mínimo, 4 caracteres"
+            },
+			password: {
+                required: "Digite sua senha", minLength: "Sua senha deve conter, no mínimo, 4 caracteres"
+            },
+ 
+        }
+    });
+});
+</script>
    </head>
    
    <body bgcolor = "#FFFFFF">
@@ -66,9 +101,9 @@
 				
             <div style = "margin:30px">
                
-               <form action = "" method = "post">
-                  <label>Usuário: </label><input type = "text" name = "username" class = "box" required autofocus /><br /><br />
-                  <label>Senha: </label><input type = "password" name = "password" class = "box" required /><br/><br />
+               <form id = "login" action = "" method = "post">
+                  <label>Usuário: </label><input type = "text" name = "username" class = "box" autofocus /><br /><br />
+                  <label>Senha: </label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Entrar "/><br />
                </form>
                <div><a href="cadastro.php">Novo Usuário</a></div>

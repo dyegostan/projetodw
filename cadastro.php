@@ -16,6 +16,7 @@
       
       $count = mysqli_num_rows($result);
 	  if($count == 0) {
+	  	 include_once("email.php");
 		 include_once("timestamp.php"); // carrega timestamp
 		 $sqlinserir = "INSERT INTO `projetodw`.`usuarios` (`id`, `usuario`, `senha`, `ultimo_login`, `contador`, `email`, `ban`, `ultimo_ip`, `level`, `registro`) VALUES (NULL, '$myusername', '$mypassword', '0000-00-00 00:00:00', '0', '$myemail', '0', '0', '0', '$timestamp')";
 		 mysqli_query($db,$sqlinserir);

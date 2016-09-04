@@ -19,7 +19,7 @@ require 'phpmailer/class.smtp.php';
             # Aqui você deve informar o e-mail que será usado na autenticação
             $mail->Username = "dyego97@hotmail.com";
             # Aqui você deve informar a senha que será usada na autenticação
-            $mail->Password = "pedrada1035";
+            $mail->Password = "senha";
             
             # Aqui você deve informar o número da porta (verifique as configurações do servidor SMTP informado)
             $mail->Port = 587;
